@@ -1,0 +1,367 @@
+## CRUD [/movies]
+
+### Search [GET]
+
+*Get paginated list of items.*
+
+Available includes: **[actors, directors, favoritedUsers, wishlistedUsers]**
+
+Available parameters <a href="#header-filters">See more...</a>
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Ok (string)
+        + data (array[Movie])
+<!-- include(responses/pagination.apib) -->
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Store [POST]
+
+*Store a newly created item in database.*
+
+Available includes: [actors, directors, favoritedUsers, wishlistedUsers]
+
+**Request rules**
+
+```
+name: 'required|max:255'
+genre: 'required|in:action,comedy,horror,crime,drama,mystery,fantasy,thriller'
+release_date: 'nullable|date'
+
+```
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Attributes
+        + name: `'str'` (string)
+        + genre: `'action'` (string)
+        + release_date: `'2012-05-29'` (string)
+
+
++ Response 201 (application/json)
+    + Attributes
+        + message: Movie has been successfully created (string)
+        + data (Movie)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/422.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Update [PUT /{id}]
+
+*Update the specified item in database.*
+
+Available includes: **[actors, directors, favoritedUsers, wishlistedUsers]**
+
+**Request rules**
+
+```
+name: 'required|max:255'
+genre: 'required|in:'.MovieGenres::stringify()
+release_date: 'nullable|date'
+
+```
+
+<!-- include(parameters/id.apib) -->
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Attributes
+        + name: `'str'` (string)
+        + genre: `'action'` (string)
+        + release_date: `'2001-10-21'` (string)
+
+
++ Response 200 (application/json)
+    + Attributes
+        + message: Movie has been successfully updated (string)
+        + data (Movie)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/422.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Show [GET /{id}]
+
+*Display the specified item.*
+
+Available includes: **[actors, directors, favoritedUsers, wishlistedUsers]**
+
+<!-- include(parameters/id.apib) -->
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: null (string)
+        + data (Movie)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Delete [DELETE /{id}]
+
+*Remove the specified item from storage.*
+
+<!-- include(parameters/id.apib) -->
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Movie has been successfully deleted (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Bulk store [POST /bulk]
+
+*Bulk store multiple resources.*
+
+Available includes: **[actors, directors, favoritedUsers, wishlistedUsers]**
+
+**Request rules**
+
+```
+name: 'required|max:255'
+genre: 'required|in:action,comedy,horror,crime,drama,mystery,fantasy,thriller'
+release_date: 'nullable|date'
+
+```
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Body
+```
+    [
+            {
+                "name": `'str'` (string)
+                "genre": `'action'` (string)
+                "release_date": `'2009-07-31'` (string)
+
+            },
+            {
+                "name": `'str'` (string)
+                "genre": `'action'` (string)
+                "release_date": `'2009-07-31'` (string)
+
+            },
+    ]
+```
+
++ Response 201 (application/json)
+    + Attributes
+        + message: Group of Movies successfully created (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/422.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Bulk delete [DELETE /bulk]
+
+*Bulk delete multiple resources.*
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Group of Movies successfully deleted (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/500.apib) -->
+
+##  FavoritedUsers [/movies/{movie}/favorited-users]
+
+### Search [GET]
+
+Available includes: **[favoriteMovies, wishlistMovies, comments]**
+
+Available parameters <a href="#header-filters">See more...</a>
+
++ Parameters
+
+    + movie: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: null (string)
+        + data (array[User])
+<!-- include(responses/pagination.apib) -->
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+
+
+##  WishlistedUsers [/movies/{movie}/wishlisted-users]
+
+### Search [GET]
+
+Available includes: **[favoriteMovies, wishlistMovies, comments]**
+
+Available parameters <a href="#header-filters">See more...</a>
+
++ Parameters
+
+    + movie: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: null (string)
+        + data (array[User])
+<!-- include(responses/pagination.apib) -->
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+
+
+##  Actors [/movies/{movie}/actors]
+
+### Search [GET]
+
+Available includes: **[movies]**
+
+Available parameters <a href="#header-filters">See more...</a>
+
++ Parameters
+
+    + movie: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: null (string)
+        + data (array[Actor])
+<!-- include(responses/pagination.apib) -->
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Attach [POST /{movie}/actors/{actor}]
+
+**Request rules**
+
+```
+role: 'required|max:255'
+role_type: 'required|in:main,support'
+
+```
+
++ Parameters
+
+    + movie: 1 (number)
+    + actor: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Attributes
+        + role: `'str'` (string)
+        + role_type: `'main'` (string)
+
+
++ Response 201 (application/json)
+    + Attributes
+        + message: Actor has been successfully added to list (string)
+        + data (Movie)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Detach [DELETE /{movie}/actors/{actor}]
+
++ Parameters
+
+    + movie: 1 (number)
+    + actor: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Actor has been successfully removed from list (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+##  Directors [/movies/{movie}/directors]
+
+### Search [GET]
+
+Available includes: **[movies]**
+
+Available parameters <a href="#header-filters">See more...</a>
+
++ Parameters
+
+    + movie: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: null (string)
+        + data (array[Director])
+<!-- include(responses/pagination.apib) -->
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Attach [POST /{movie}/directors/{director}]
+
+**Request rules**
+
+```
+
+```
+
++ Parameters
+
+    + movie: 1 (number)
+    + director: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Attributes
+
+
++ Response 201 (application/json)
+    + Attributes
+        + message: Director has been successfully added to list (string)
+        + data (Movie)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Detach [DELETE /{movie}/directors/{director}]
+
++ Parameters
+
+    + movie: 1 (number)
+    + director: 1 (number)
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Director has been successfully removed from list (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+

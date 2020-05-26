@@ -1,0 +1,46 @@
+# Data Structures
+
+## Token (object)
++ token: `randomized` (string) - Unique token for user
++ type: `bearer` (string) - Type of token
++ expires_in: `4200` (number, nullable) - Number of seconds until token expires
+
+## Pagination (object)
+  + total: 1500 (number) - total elements
+  + count: 15 (number) - count elements
+  + per_page: 15 (number) - total elements per page default 15
+  + current_page: 2 (number) - current page
+  + total_pages: 100 (number) - total pages
+  + links
+      + previous: http://127.0.0.1:8000/api/{resource}?page=1 (string) - Link to previous page
+      + next: http://127.0.0.1:8000/api/{resource}?page=3 (string) - Link to next page
+
+## Actor (object)
++ id: `'1'` (number)
++ firstname: `'str'` (string)
++ lastname: `'str'` (string)
++ dob: `'1981-08-23'` (string)
+
+## Comment (object)
++ id: `'1'` (number)
++ text: `'text'` (string)
++ rate: `'349'` (number)
+
+## Director (object)
++ id: `'1'` (number)
++ firstname: `'str'` (string)
++ lastname: `'str'` (string)
++ dob: `'1981-09-22'` (string)
+
+## Movie (object)
++ id: `'1'` (number)
++ name: `'str'` (string)
++ genre: `'action'` (string)
++ release_date: `'1986-10-01'` (string)
+
+## User (object)
++ id: `'1'` (number)
++ email_verified_at: `'1590511146'` (string)
++ email: `'str'` (string)
+
+
