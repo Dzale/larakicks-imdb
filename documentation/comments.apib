@@ -1,0 +1,174 @@
+## CRUD [/comments]
+
+### Search [GET]
+
+*Get paginated list of items.*
+
+Available includes: **[creator]**
+
+Available parameters <a href="#header-filters">See more...</a>
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Ok (string)
+        + data (array[Comment])
+<!-- include(responses/pagination.apib) -->
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Store [POST]
+
+*Store a newly created item in database.*
+
+Available includes: [creator]
+
+**Request rules**
+
+```
+text: 'required'
+rate: 'nullable|integer|min:0'
+
+```
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Attributes
+        + text: `'text'` (string)
+        + rate: `'572'` (number)
+
+
++ Response 201 (application/json)
+    + Attributes
+        + message: Comment has been successfully created (string)
+        + data (Comment)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/422.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Update [PUT /{id}]
+
+*Update the specified item in database.*
+
+Available includes: **[creator]**
+
+**Request rules**
+
+```
+text: 'required'
+rate: 'nullable|integer|min:0'
+
+```
+
+<!-- include(parameters/id.apib) -->
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Attributes
+        + text: `'text'` (string)
+        + rate: `'599'` (number)
+
+
++ Response 200 (application/json)
+    + Attributes
+        + message: Comment has been successfully updated (string)
+        + data (Comment)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/422.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Show [GET /{id}]
+
+*Display the specified item.*
+
+Available includes: **[creator]**
+
+<!-- include(parameters/id.apib) -->
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: null (string)
+        + data (Comment)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Delete [DELETE /{id}]
+
+*Remove the specified item from storage.*
+
+<!-- include(parameters/id.apib) -->
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Comment has been successfully deleted (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Bulk store [POST /bulk]
+
+*Bulk store multiple resources.*
+
+Available includes: **[creator]**
+
+**Request rules**
+
+```
+text: 'required'
+rate: 'nullable|integer|min:0'
+
+```
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
+    + Body
+```
+    [
+            {
+                "text": `'text'` (string)
+                "rate": `'31'` (number)
+
+            },
+            {
+                "text": `'text'` (string)
+                "rate": `'31'` (number)
+
+            },
+    ]
+```
+
++ Response 201 (application/json)
+    + Attributes
+        + message: Group of Comments successfully created (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/422.apib) -->
+<!-- include(responses/500.apib) -->
+
+### Bulk delete [DELETE /bulk]
+
+*Bulk delete multiple resources.*
+
++ Request (application/json)
+    <!-- include(requests/header.apib) -->
++ Response 200 (application/json)
+    + Attributes
+        + message: Group of Comments successfully deleted (string)
+        + data : null (string, nullable)
+
+<!-- include(responses/401.apib) -->
+<!-- include(responses/404.apib) -->
+<!-- include(responses/500.apib) -->
+
+
