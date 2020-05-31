@@ -35,12 +35,14 @@ class DirectorController extends Controller
     }
 
     /**
-     * Get paginated items, included advanced REST querying
+     * Index
      *
-     * Display a listing of the item.
-     *
+     * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director paginate=10
      */
     public function index(Request $request): JsonResponse
     {
@@ -53,12 +55,14 @@ class DirectorController extends Controller
     }
 
     /**
-     * Create item
+     * Store
      *
-     * Store a newly created item in storage.
-     *
+     * Store newly created director.
      * @param  StoreDirectorRequest  $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director
      */
     public function store(StoreDirectorRequest $request): JsonResponse
     {
@@ -74,13 +78,15 @@ class DirectorController extends Controller
     }
 
     /**
-     * Update item
+     * Update
      *
-     * Update the specified item in storage.
-     *
+     * Update specified director.
      * @param  UpdateDirectorRequest  $request
      * @param  Director $director
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director
      */
     public function update(UpdateDirectorRequest $request, Director $director): JsonResponse
     {
@@ -95,12 +101,14 @@ class DirectorController extends Controller
                 ->message(__('crud.update', ['item' => __('model.Director')]));
     }
     /**
-     * Get Single Item
+     * Show
      *
-     * Display the specified item.
-     *
+     * Display specified director.
      * @param  Director $director
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director
      */
     public function show(Director $director): JsonResponse
     {
@@ -112,13 +120,13 @@ class DirectorController extends Controller
     }
 
     /**
-     * Remove item
+     * Destroy
      *
-     * Remove the specified item from storage.
-     *
+     * Remove specified director.
 
      * @param  Director  $director
      * @return  JsonResponse
+     * @authenticated
      */
     public function destroy(Director $director): JsonResponse
     {
@@ -131,13 +139,15 @@ class DirectorController extends Controller
     }
 
     /**
-     * Search Movies for Director with given $id
+     * Search Movies
      *
-     * Movies from existing resource.
-     *
+     * Get paginated list of Movies for specified director.
      * @param Request $request
      * @param Director $director
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie paginate=10
      */
     public function searchMovies(Request $request, Director $director): JsonResponse
     {
@@ -153,12 +163,14 @@ class DirectorController extends Controller
     /**
      * Attach Movie
      *
-     * Attach the Movie to existing resource.
-     *
-     * @param  MovieAttachDirectorRequest  $request
-     * @param  Director  $director
-     * @param  Movie  $movie
+     * Attach Movie to existing director.
+     * @param MovieAttachDirectorRequest  $request
+     * @param Director  $director
+     * @param Movie  $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function attachMovie(MovieAttachDirectorRequest $request, Director $director, Movie $movie): JsonResponse
     {
@@ -175,12 +187,12 @@ class DirectorController extends Controller
     /**
      * Detach Movie
      *
-     * Detach the Movie from existing resource.
-     *
+     * Detach Movie from existing director.
 
-     * @param  Director  $director
-     * @param  Movie  $movie
+     * @param Director  $director
+     * @param Movie  $movie
      * @return JsonResponse
+     * @authenticated
      */
     public function detachMovie(Director $director, Movie $movie): JsonResponse
     {

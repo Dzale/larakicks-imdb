@@ -25,7 +25,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Login user.
+     * Login
+     *
+     * CSRF login
      * @param LoginRequest $request
      * @return JsonResponse
      * @throws AuthenticationException
@@ -42,8 +44,11 @@ class AuthController extends Controller
     }
 
     /**
-     * Log the user out.
+     * Logout
+     *
+     * CSRF logout
      * @return JsonResponse
+     * @authenticated
      */
     public function logout(): JsonResponse
     {

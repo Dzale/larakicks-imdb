@@ -21,6 +21,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'email' => $faker->unique()->safeEmail,
         'password' => 'secret',
+        'email_verified_at' => now(),
 
     ];
 });

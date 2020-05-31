@@ -7,8 +7,6 @@ use App\Models\User;
 use App\Http\Requests\TokenRequest;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @group Auth Tokens
@@ -29,6 +27,8 @@ class TokenController extends Controller
     }
 
     /**
+     * Login
+     *
      * Issue new token for given credentials.
      * @param TokenRequest $request
      * @return JsonResponse
@@ -45,16 +45,23 @@ class TokenController extends Controller
         $user = User::where('email', $request->email)->first();
         $token = $user->createToken($request->device_name)->plainTextToken;
 
-        return response()->resource(JsonResource::make([
-            'token' => $token,
-            'type' => 'bearer',
-            'expires_in' => config('sanctum.expiration')
-        ]))->setStatusCode(201);
+        return response()->json(
+            [
+                'data' => [
+                    'token' => $token,
+                    'type' => 'bearer',
+                    'expires_in' => config('sanctum.expiration')
+                ]
+            ]
+        )->message(null)->setStatusCode(201);
     }
 
     /**
-     * Log the user out (Remove the token).
+     * Logout
+     *
+     * Revoke issued user token
      * @return JsonResponse
+     * @authenticated
      */
     public function destroy(): JsonResponse
     {

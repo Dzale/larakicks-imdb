@@ -32,12 +32,14 @@ class CommentController extends Controller
     }
 
     /**
-     * Get paginated items, included advanced REST querying
+     * Index
      *
-     * Display a listing of the item.
-     *
+     * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment paginate=10
      */
     public function index(Request $request): JsonResponse
     {
@@ -50,12 +52,14 @@ class CommentController extends Controller
     }
 
     /**
-     * Create item
+     * Store
      *
-     * Store a newly created item in storage.
-     *
+     * Store newly created comment.
      * @param  StoreCommentRequest  $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment
      */
     public function store(StoreCommentRequest $request): JsonResponse
     {
@@ -73,13 +77,15 @@ class CommentController extends Controller
     }
 
     /**
-     * Update item
+     * Update
      *
-     * Update the specified item in storage.
-     *
+     * Update specified comment.
      * @param  UpdateCommentRequest  $request
      * @param  Comment $comment
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment
      */
     public function update(UpdateCommentRequest $request, Comment $comment): JsonResponse
     {
@@ -94,12 +100,14 @@ class CommentController extends Controller
                 ->message(__('crud.update', ['item' => __('model.Comment')]));
     }
     /**
-     * Get Single Item
+     * Show
      *
-     * Display the specified item.
-     *
+     * Display specified comment.
      * @param  Comment $comment
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment
      */
     public function show(Comment $comment): JsonResponse
     {
@@ -111,13 +119,13 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove item
+     * Destroy
      *
-     * Remove the specified item from storage.
-     *
+     * Remove specified comment.
 
      * @param  Comment  $comment
      * @return  JsonResponse
+     * @authenticated
      */
     public function destroy(Comment $comment): JsonResponse
     {
