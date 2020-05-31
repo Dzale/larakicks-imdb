@@ -40,6 +40,9 @@ class DirectorController extends Controller
      * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director paginate=10
      */
     public function index(Request $request): JsonResponse
     {
@@ -57,6 +60,9 @@ class DirectorController extends Controller
      * Store newly created director.
      * @param  StoreDirectorRequest  $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director
      */
     public function store(StoreDirectorRequest $request): JsonResponse
     {
@@ -78,6 +84,9 @@ class DirectorController extends Controller
      * @param  UpdateDirectorRequest  $request
      * @param  Director $director
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director
      */
     public function update(UpdateDirectorRequest $request, Director $director): JsonResponse
     {
@@ -97,6 +106,9 @@ class DirectorController extends Controller
      * Display specified director.
      * @param  Director $director
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director
      */
     public function show(Director $director): JsonResponse
     {
@@ -114,6 +126,7 @@ class DirectorController extends Controller
 
      * @param  Director  $director
      * @return  JsonResponse
+     * @authenticated
      */
     public function destroy(Director $director): JsonResponse
     {
@@ -132,6 +145,9 @@ class DirectorController extends Controller
      * @param Request $request
      * @param Director $director
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie paginate=10
      */
     public function searchMovies(Request $request, Director $director): JsonResponse
     {
@@ -152,6 +168,9 @@ class DirectorController extends Controller
      * @param Director  $director
      * @param Movie  $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function attachMovie(MovieAttachDirectorRequest $request, Director $director, Movie $movie): JsonResponse
     {
@@ -173,6 +192,7 @@ class DirectorController extends Controller
      * @param Director  $director
      * @param Movie  $movie
      * @return JsonResponse
+     * @authenticated
      */
     public function detachMovie(Director $director, Movie $movie): JsonResponse
     {

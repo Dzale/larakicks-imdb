@@ -21,7 +21,7 @@ $factory->define(App\Models\Comment::class, function (Faker $faker) {
             return factory(\App\Models\User::class)->create()->id;
         },
         'text' => 'text',
-        'rate' => '202',
+        'rate' => '478',
 
     ];
 });

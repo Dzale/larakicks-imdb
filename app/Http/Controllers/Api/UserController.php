@@ -158,6 +158,9 @@ class UserController extends Controller
      * Get paginated list of FavoriteMovies for User.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie paginate=10
      */
     public function searchFavoriteMovies(Request $request): JsonResponse
     {
@@ -175,6 +178,9 @@ class UserController extends Controller
      * Get paginated list of WishlistMovies for User.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie paginate=10
      */
     public function searchWishlistMovies(Request $request): JsonResponse
     {
@@ -192,6 +198,9 @@ class UserController extends Controller
      * Get paginated list of Comments for User.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment paginate=10
      */
     public function searchComments(Request $request): JsonResponse
     {
@@ -210,6 +219,9 @@ class UserController extends Controller
      * @param  UserAttachFavoriteMovieRequest  $request
      * @param  Movie  $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function attachFavoriteMovie(UserAttachFavoriteMovieRequest $request, Movie $movie): JsonResponse
     {
@@ -234,6 +246,9 @@ class UserController extends Controller
      * @param  UserAttachWishlistMovieRequest  $request
      * @param  Movie  $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function attachWishlistMovie(UserAttachWishlistMovieRequest $request, Movie $movie): JsonResponse
     {
@@ -257,6 +272,7 @@ class UserController extends Controller
      * Detach specified resource from User.
      * @param  Movie  $movie
      * @return JsonResponse
+     * @authenticated
      */
     public function detachFavoriteMovie(Movie $movie): JsonResponse
     {
@@ -272,6 +288,7 @@ class UserController extends Controller
      * Detach specified resource from User.
      * @param  Movie  $movie
      * @return JsonResponse
+     * @authenticated
      */
     public function detachWishlistMovie(Movie $movie): JsonResponse
     {

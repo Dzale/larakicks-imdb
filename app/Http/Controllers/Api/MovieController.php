@@ -44,6 +44,9 @@ class MovieController extends Controller
      * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie paginate=10
      */
     public function index(Request $request): JsonResponse
     {
@@ -61,6 +64,9 @@ class MovieController extends Controller
      * Store newly created movie.
      * @param  StoreMovieRequest  $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function store(StoreMovieRequest $request): JsonResponse
     {
@@ -82,6 +88,9 @@ class MovieController extends Controller
      * @param  UpdateMovieRequest  $request
      * @param  Movie $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function update(UpdateMovieRequest $request, Movie $movie): JsonResponse
     {
@@ -101,6 +110,9 @@ class MovieController extends Controller
      * Display specified movie.
      * @param  Movie $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function show(Movie $movie): JsonResponse
     {
@@ -118,6 +130,7 @@ class MovieController extends Controller
 
      * @param  Movie  $movie
      * @return  JsonResponse
+     * @authenticated
      */
     public function destroy(Movie $movie): JsonResponse
     {
@@ -136,6 +149,9 @@ class MovieController extends Controller
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Actor\ActorResource
+     * @apiResourceModel App\Models\Actor paginate=10
      */
     public function searchActors(Request $request, Movie $movie): JsonResponse
     {
@@ -155,6 +171,9 @@ class MovieController extends Controller
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director paginate=10
      */
     public function searchDirectors(Request $request, Movie $movie): JsonResponse
     {
@@ -174,6 +193,9 @@ class MovieController extends Controller
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\User\UserResource
+     * @apiResourceModel App\Models\User paginate=10
      */
     public function searchFavoritedUsers(Request $request, Movie $movie): JsonResponse
     {
@@ -193,6 +215,9 @@ class MovieController extends Controller
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\User\UserResource
+     * @apiResourceModel App\Models\User paginate=10
      */
     public function searchWishlistedUsers(Request $request, Movie $movie): JsonResponse
     {
@@ -213,6 +238,9 @@ class MovieController extends Controller
      * @param Movie  $movie
      * @param Actor  $actor
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Actor\ActorResource
+     * @apiResourceModel App\Models\Actor
      */
     public function attachActor(MovieAttachActorRequest $request, Movie $movie, Actor $actor): JsonResponse
     {
@@ -234,6 +262,9 @@ class MovieController extends Controller
      * @param Movie  $movie
      * @param Director  $director
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Director\DirectorResource
+     * @apiResourceModel App\Models\Director
      */
     public function attachDirector(MovieAttachDirectorRequest $request, Movie $movie, Director $director): JsonResponse
     {
@@ -255,6 +286,7 @@ class MovieController extends Controller
      * @param Movie  $movie
      * @param Actor  $actor
      * @return JsonResponse
+     * @authenticated
      */
     public function detachActor(Movie $movie, Actor $actor): JsonResponse
     {
@@ -274,6 +306,7 @@ class MovieController extends Controller
      * @param Movie  $movie
      * @param Director  $director
      * @return JsonResponse
+     * @authenticated
      */
     public function detachDirector(Movie $movie, Director $director): JsonResponse
     {

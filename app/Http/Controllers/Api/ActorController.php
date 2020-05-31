@@ -40,6 +40,9 @@ class ActorController extends Controller
      * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Actor\ActorResource
+     * @apiResourceModel App\Models\Actor paginate=10
      */
     public function index(Request $request): JsonResponse
     {
@@ -57,6 +60,9 @@ class ActorController extends Controller
      * Store newly created actor.
      * @param  StoreActorRequest  $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Actor\ActorResource
+     * @apiResourceModel App\Models\Actor
      */
     public function store(StoreActorRequest $request): JsonResponse
     {
@@ -78,6 +84,9 @@ class ActorController extends Controller
      * @param  UpdateActorRequest  $request
      * @param  Actor $actor
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Actor\ActorResource
+     * @apiResourceModel App\Models\Actor
      */
     public function update(UpdateActorRequest $request, Actor $actor): JsonResponse
     {
@@ -97,6 +106,9 @@ class ActorController extends Controller
      * Display specified actor.
      * @param  Actor $actor
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Actor\ActorResource
+     * @apiResourceModel App\Models\Actor
      */
     public function show(Actor $actor): JsonResponse
     {
@@ -114,6 +126,7 @@ class ActorController extends Controller
 
      * @param  Actor  $actor
      * @return  JsonResponse
+     * @authenticated
      */
     public function destroy(Actor $actor): JsonResponse
     {
@@ -132,6 +145,9 @@ class ActorController extends Controller
      * @param Request $request
      * @param Actor $actor
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie paginate=10
      */
     public function searchMovies(Request $request, Actor $actor): JsonResponse
     {
@@ -152,6 +168,9 @@ class ActorController extends Controller
      * @param Actor  $actor
      * @param Movie  $movie
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Movie\MovieResource
+     * @apiResourceModel App\Models\Movie
      */
     public function attachMovie(MovieAttachActorRequest $request, Actor $actor, Movie $movie): JsonResponse
     {
@@ -173,6 +192,7 @@ class ActorController extends Controller
      * @param Actor  $actor
      * @param Movie  $movie
      * @return JsonResponse
+     * @authenticated
      */
     public function detachMovie(Actor $actor, Movie $movie): JsonResponse
     {

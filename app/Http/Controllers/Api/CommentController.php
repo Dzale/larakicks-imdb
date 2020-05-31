@@ -37,6 +37,9 @@ class CommentController extends Controller
      * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResourceCollection App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment paginate=10
      */
     public function index(Request $request): JsonResponse
     {
@@ -54,6 +57,9 @@ class CommentController extends Controller
      * Store newly created comment.
      * @param  StoreCommentRequest  $request
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment
      */
     public function store(StoreCommentRequest $request): JsonResponse
     {
@@ -77,6 +83,9 @@ class CommentController extends Controller
      * @param  UpdateCommentRequest  $request
      * @param  Comment $comment
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment
      */
     public function update(UpdateCommentRequest $request, Comment $comment): JsonResponse
     {
@@ -96,6 +105,9 @@ class CommentController extends Controller
      * Display specified comment.
      * @param  Comment $comment
      * @return JsonResponse
+     * @authenticated
+     * @apiResource App\Http\Resources\Comment\CommentResource
+     * @apiResourceModel App\Models\Comment
      */
     public function show(Comment $comment): JsonResponse
     {
@@ -113,6 +125,7 @@ class CommentController extends Controller
 
      * @param  Comment  $comment
      * @return  JsonResponse
+     * @authenticated
      */
     public function destroy(Comment $comment): JsonResponse
     {
