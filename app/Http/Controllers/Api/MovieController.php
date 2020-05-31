@@ -39,10 +39,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Get paginated items, included advanced REST querying
+     * Index
      *
-     * Display a listing of the item.
-     *
+     * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
      */
@@ -57,10 +56,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Create item
+     * Store
      *
-     * Store a newly created item in storage.
-     *
+     * Store newly created movie.
      * @param  StoreMovieRequest  $request
      * @return JsonResponse
      */
@@ -78,10 +76,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Update item
+     * Update
      *
-     * Update the specified item in storage.
-     *
+     * Update specified movie.
      * @param  UpdateMovieRequest  $request
      * @param  Movie $movie
      * @return JsonResponse
@@ -99,10 +96,9 @@ class MovieController extends Controller
                 ->message(__('crud.update', ['item' => __('model.Movie')]));
     }
     /**
-     * Get Single Item
+     * Show
      *
-     * Display the specified item.
-     *
+     * Display specified movie.
      * @param  Movie $movie
      * @return JsonResponse
      */
@@ -116,10 +112,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Remove item
+     * Destroy
      *
-     * Remove the specified item from storage.
-     *
+     * Remove specified movie.
 
      * @param  Movie  $movie
      * @return  JsonResponse
@@ -135,10 +130,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Search Actors for Movie with given $id
+     * Search Actors
      *
-     * Actors from existing resource.
-     *
+     * Get paginated list of Actors for specified movie.
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
@@ -155,10 +149,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Search Directors for Movie with given $id
+     * Search Directors
      *
-     * Directors from existing resource.
-     *
+     * Get paginated list of Directors for specified movie.
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
@@ -175,10 +168,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Search FavoritedUsers for Movie with given $id
+     * Search FavoritedUsers
      *
-     * FavoritedUsers from existing resource.
-     *
+     * Get paginated list of FavoritedUsers for specified movie.
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
@@ -195,10 +187,9 @@ class MovieController extends Controller
     }
 
     /**
-     * Search WishlistedUsers for Movie with given $id
+     * Search WishlistedUsers
      *
-     * WishlistedUsers from existing resource.
-     *
+     * Get paginated list of WishlistedUsers for specified movie.
      * @param Request $request
      * @param Movie $movie
      * @return JsonResponse
@@ -217,11 +208,10 @@ class MovieController extends Controller
     /**
      * Attach Actor
      *
-     * Attach the Actor to existing resource.
-     *
-     * @param  MovieAttachActorRequest  $request
-     * @param  Movie  $movie
-     * @param  Actor  $actor
+     * Attach Actor to existing movie.
+     * @param MovieAttachActorRequest  $request
+     * @param Movie  $movie
+     * @param Actor  $actor
      * @return JsonResponse
      */
     public function attachActor(MovieAttachActorRequest $request, Movie $movie, Actor $actor): JsonResponse
@@ -239,11 +229,10 @@ class MovieController extends Controller
     /**
      * Attach Director
      *
-     * Attach the Director to existing resource.
-     *
-     * @param  MovieAttachDirectorRequest  $request
-     * @param  Movie  $movie
-     * @param  Director  $director
+     * Attach Director to existing movie.
+     * @param MovieAttachDirectorRequest  $request
+     * @param Movie  $movie
+     * @param Director  $director
      * @return JsonResponse
      */
     public function attachDirector(MovieAttachDirectorRequest $request, Movie $movie, Director $director): JsonResponse
@@ -261,11 +250,10 @@ class MovieController extends Controller
     /**
      * Detach Actor
      *
-     * Detach the Actor from existing resource.
-     *
+     * Detach Actor from existing movie.
 
-     * @param  Movie  $movie
-     * @param  Actor  $actor
+     * @param Movie  $movie
+     * @param Actor  $actor
      * @return JsonResponse
      */
     public function detachActor(Movie $movie, Actor $actor): JsonResponse
@@ -281,11 +269,10 @@ class MovieController extends Controller
     /**
      * Detach Director
      *
-     * Detach the Director from existing resource.
-     *
+     * Detach Director from existing movie.
 
-     * @param  Movie  $movie
-     * @param  Director  $director
+     * @param Movie  $movie
+     * @param Director  $director
      * @return JsonResponse
      */
     public function detachDirector(Movie $movie, Director $director): JsonResponse

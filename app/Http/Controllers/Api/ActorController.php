@@ -35,10 +35,9 @@ class ActorController extends Controller
     }
 
     /**
-     * Get paginated items, included advanced REST querying
+     * Index
      *
-     * Display a listing of the item.
-     *
+     * Get paginated list of items.
      * @param Request $request
      * @return JsonResponse
      */
@@ -53,10 +52,9 @@ class ActorController extends Controller
     }
 
     /**
-     * Create item
+     * Store
      *
-     * Store a newly created item in storage.
-     *
+     * Store newly created actor.
      * @param  StoreActorRequest  $request
      * @return JsonResponse
      */
@@ -74,10 +72,9 @@ class ActorController extends Controller
     }
 
     /**
-     * Update item
+     * Update
      *
-     * Update the specified item in storage.
-     *
+     * Update specified actor.
      * @param  UpdateActorRequest  $request
      * @param  Actor $actor
      * @return JsonResponse
@@ -95,10 +92,9 @@ class ActorController extends Controller
                 ->message(__('crud.update', ['item' => __('model.Actor')]));
     }
     /**
-     * Get Single Item
+     * Show
      *
-     * Display the specified item.
-     *
+     * Display specified actor.
      * @param  Actor $actor
      * @return JsonResponse
      */
@@ -112,10 +108,9 @@ class ActorController extends Controller
     }
 
     /**
-     * Remove item
+     * Destroy
      *
-     * Remove the specified item from storage.
-     *
+     * Remove specified actor.
 
      * @param  Actor  $actor
      * @return  JsonResponse
@@ -131,10 +126,9 @@ class ActorController extends Controller
     }
 
     /**
-     * Search Movies for Actor with given $id
+     * Search Movies
      *
-     * Movies from existing resource.
-     *
+     * Get paginated list of Movies for specified actor.
      * @param Request $request
      * @param Actor $actor
      * @return JsonResponse
@@ -153,11 +147,10 @@ class ActorController extends Controller
     /**
      * Attach Movie
      *
-     * Attach the Movie to existing resource.
-     *
-     * @param  MovieAttachActorRequest  $request
-     * @param  Actor  $actor
-     * @param  Movie  $movie
+     * Attach Movie to existing actor.
+     * @param MovieAttachActorRequest  $request
+     * @param Actor  $actor
+     * @param Movie  $movie
      * @return JsonResponse
      */
     public function attachMovie(MovieAttachActorRequest $request, Actor $actor, Movie $movie): JsonResponse
@@ -175,11 +168,10 @@ class ActorController extends Controller
     /**
      * Detach Movie
      *
-     * Detach the Movie from existing resource.
-     *
+     * Detach Movie from existing actor.
 
-     * @param  Actor  $actor
-     * @param  Movie  $movie
+     * @param Actor  $actor
+     * @param Movie  $movie
      * @return JsonResponse
      */
     public function detachMovie(Actor $actor, Movie $movie): JsonResponse

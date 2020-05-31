@@ -44,7 +44,7 @@ class LoginTest extends TestCase
      * @test
      * @depends endpoint_shouldReturn_200
      */
-    public function endpoint_shouldIssueBearerTokenProvidingAccessToAuthOnlyEndpoints()
+    public function endpoint_shouldIssueCsrfProvidingAccessToAuthOnlyEndpoints()
     {
         factory(User::class)->create([
             'email' => 'unique@email.com',
