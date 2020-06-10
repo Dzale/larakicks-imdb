@@ -31,6 +31,9 @@ class AdminSeeder extends Seeder
             $user->fill($admin["user"])->save();
             $user->markEmailAsVerified();
 
+            $user->assignRole('admin');
+            $user->assignRole('user');
+
             $profile = new \App\Models\Profile;
             $profile->fill($admin['profile'])
                 ->user()->associate($user)

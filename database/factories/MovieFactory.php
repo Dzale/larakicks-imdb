@@ -19,7 +19,7 @@ $factory->define(App\Models\Movie::class, function (Faker $faker) {
     return [
         'name' => 'str',
         'genre' => 'action',
-        'release_date' => '1983-10-07',
+        'release_date' => '1977-02-16',
 
     ];
 });

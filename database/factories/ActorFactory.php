@@ -19,7 +19,7 @@ $factory->define(App\Models\Actor::class, function (Faker $faker) {
     return [
         'firstname' => 'str',
         'lastname' => 'str',
-        'dob' => '2002-03-11',
+        'dob' => '1998-01-28',
 
     ];
 });

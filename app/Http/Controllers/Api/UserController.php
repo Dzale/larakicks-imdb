@@ -92,6 +92,9 @@ class UserController extends Controller
             $profile->user()->associate($user);
             $profile->save();
 
+            $user->assignRole('admin');
+            $user->assignRole('user');
+
             return $user;
         });
 
