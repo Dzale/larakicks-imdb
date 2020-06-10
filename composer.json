@@ -57,10 +57,10 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan vendor:publish --provider=\"Laravel\\Sanctum\\SanctumServiceProvider\"",
             "@php artisan vendor:publish --provider=\"Spatie\\QueryBuilder\\QueryBuilderServiceProvider\"",
             "@php artisan vendor:publish --provider=\"Spatie\\Permission\\PermissionServiceProvider\"",
-            "@php artisan scribe:generate",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-root-package-install": [
