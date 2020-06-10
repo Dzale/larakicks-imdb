@@ -56,24 +56,6 @@
 9. Open browser and type "localhost:8000"
 
 
-## Building API documentation (Still in development, so some of the routes will be missing...)
-
-1. Install agilio (only first time)
-
-        npm install -g aglio
-
-
-2. Build
-
-        aglio --theme-variables slate -i documentation/documentation.apib -o ./public/docs.html
-
-## Building Postman routes
-
-1. Build collection
-
-        php artisan make:postman --routePrefix="api"
-
-
 ## Updates
 
 1.  Update sources in project directory:
@@ -84,10 +66,6 @@
 2.  Update composer dependencies (if composer.json changed):
 
         composer update
-
-## [Documentation](http://127.0.0.1:8000/docs.html)
-
-## [Postman examples](http://127.0.0.1:8000/postman/collection.json)
 
 ## About Laravel
 

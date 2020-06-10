@@ -13,20 +13,6 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         $roles = [
-            [
-                "name" => "admin",
-                "permissions" => [
-                    ''
-                ],
-            ],
-
-            [
-                "name" => "user",
-                "permissions" => [
-                    ''
-                ],
-            ],
-
         ];
         $permissions = [
             'movie-view-all',
