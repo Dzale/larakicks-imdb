@@ -19,7 +19,7 @@ $factory->define(App\Models\Director::class, function (Faker $faker) {
     return [
         'firstname' => 'str',
         'lastname' => 'str',
-        'dob' => '1972-10-28',
+        'dob' => '2010-09-29',
 
     ];
 });
